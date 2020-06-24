@@ -30,6 +30,7 @@ class Solution {
 
    */
 
+//滑动窗口
   function lengthOfLongestSubstring($s) {
     if (!$s || strlen($s) == 0) return 0;
 
@@ -37,13 +38,19 @@ class Solution {
     $ret = 0;
     $start = 0;
     for ($i = 0; $i < strlen($s); $i++) {
+      //是否有已经遍历到的字符串 $start <= $array[$s[$i]]加这个的目的是不能让指针右移之后又左移,避免'tmmzuxt'
+      //这样的case算错
       if (isset($array[$s[$i]]) && $start <= $array[$s[$i]]) {
-        $start = $array[$s[$i]] + 1;
-      } else {
+        $start = $array[$s[$i]] + 1;//修改起始位置,一次指针滑动可不小于一位,这样从start开始暂时不会有重复字符,如acc
+      } else {//无重复的话比较当前最长长度
         $ret = max($ret, $i - $start + 1);
       }
-      $array[$s[$i]] = $i;
+      $array[$s[$i]] = $i;//某个字符出现的位置
     }
     return $ret;
   }
 }
+
+$solu = new Solution();
+$str = "tmmzuxt"; //注意这个测试用例的t在最开始出现
+var_dump( $solu->lengthOfLongestSubstring($str));
