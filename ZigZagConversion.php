@@ -18,27 +18,27 @@ class Solution {
   function convert($s, $numRows) {
     if (strlen($s) <= 1 || $numRows == 1) return $s;
 
-    $ret = [];
-    $pre = -1;
-    $sign = "down";
+    $ret = [];//二维
+    $pre = -1; //哪一行
+    $sign = "down";//一开始往下走
     for ($i = 0; $i < strlen($s); $i++) {
       if ($sign == "up") {
         $ret[$pre - 1][] = $s[$i];
         $pre = $pre - 1;
-        if ($pre == 0) {
+        if ($pre == 0) {//到顶了
           $sign = "down";
         }
       } else {
         $ret[$pre + 1][] = $s[$i];
         $pre = $pre + 1;
-        if ($pre == $numRows - 1) {
+        if ($pre == $numRows - 1) {//到底了
           $sign = "up";
         }
       }
     }
     return implode('', array_map(function($a){return implode('', $a);}, $ret));
   }
-
+  //数学规律
   function convert2($s, $numRows) {
     if (strlen($s) <= 1 || $numRows == 1) return $s;
 

@@ -16,12 +16,13 @@ class Solution {
     $res = 0;
     while ($x != 0) {
       $res = floor($res * 10 + $x % 10);
-      if ($x < 0) {
-        $x = ceil($x / 10);
-      } else {
-        $x = floor($x / 10);
-      }
-      if ($res > Pow(2, 31) - 1 || $res < - Pow(2, 31) -1) return 0;
+      $x = intval($x / 10);
+      // if ($x < 0) {
+      //   $x = ceil($x / 10);
+      // } else {
+      //   $x = floor($x / 10);
+      // }
+      if ($res > Pow(2, 31) - 1 || $res < - Pow(2, 31) -1) return 0;//反转溢出判断
     }
     return $res;
   }

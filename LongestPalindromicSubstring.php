@@ -64,7 +64,7 @@ class Solution {
   function longestPalindrome2($s) {
     if (strlen($s) <= 1) return $s;
     $res = $s[0];
-    $max = 0;
+    $max = 0;//保存最大长度
     if ($s[0] == $s[1]) {
       $res = substr($s, 0, 2);
     }
