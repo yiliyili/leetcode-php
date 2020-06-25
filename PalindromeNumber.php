@@ -15,6 +15,7 @@ class Solution {
    输出: false
    */
   function isPalindrome($x) {
+    //末尾带0的和负数直接返回
     if ($x < 0 || ($x != 0 && $x % 10 == 0)) return false;
 
     $source = $x;

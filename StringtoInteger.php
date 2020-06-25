@@ -37,14 +37,14 @@ class Solution {
       $start = 0;
     }
     for ($i = $start; $i < strlen($str); $i++) {
-      if (!is_numeric($str[$i])) {
+      if (!is_numeric($str[$i])) {//是不是整数
         return $res * $sign;
       }
 
-      $res = $res * 10 + $str[$i];
-      if ($res >= Pow(2, 31)) {
+      $res = $res * 10 + $str[$i];//弱类型可以累加,隐式转换
+      if ($res >= Pow(2, 31)) {//这里还没处理正负数
         if ($sign > 0) {
-          return Pow(2, 31) - 1 * $sign;
+          return Pow(2, 31) - 1;
         }
         return Pow(2, 31) * $sign;
       }
