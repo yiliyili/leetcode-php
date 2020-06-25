@@ -1,4 +1,5 @@
 <?php
+// 20. 有效的括号
 class Solution {
 
   /**
@@ -28,15 +29,15 @@ class Solution {
     $data = [")" => "(", "}" => "{", "]" => "["];
     $stack = [];
     for ($i = 0; $i < strlen($s); $i++) {
-      if (isset($data[$s[$i]])) {
+      if (isset($data[$s[$i]])) {//发现是右括号
         if (empty($stack)) {
           return false;
         }
-        $ele = array_pop($stack);
+        $ele = array_pop($stack);//弹出一个左括号
         if ($data[$s[$i]] != $ele) {
           return false;
         }
-      } else {
+      } else {//左括号入栈
         array_push($stack, $s[$i]);
       }
     }

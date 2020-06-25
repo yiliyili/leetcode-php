@@ -7,6 +7,7 @@
  *     function __construct($val) { $this->val = $val; }
  * }
  */
+// 21. 合并两个有序链表
 class Solution {
 
   /**
@@ -23,10 +24,10 @@ class Solution {
   function mergeTwoLists($l1, $l2) {
     if (!$l1) return $l2;
     if (!$l2) return $l1;
-
+    //虚拟头结点
     $dummyhead = new ListNode(0);
     $current = $dummyhead;
-    while ($l1 || $l2) {
+    while ($l1 || $l2) {//长度不一定一样
       if (!$l1) {
         $current->next = $l2;
         break;
