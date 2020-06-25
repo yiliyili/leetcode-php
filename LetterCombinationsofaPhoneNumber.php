@@ -1,4 +1,5 @@
 <?php
+// 17. 电话号码的字母组合
 class Solution {
 
     
@@ -29,19 +30,20 @@ class Solution {
     $this->_dfs($digits, 0);
     return $this->res;
   }
-
-  private function _dfs($digits, $step) {
-    if ($step == strlen($digits)) {
+  //深度优先,回溯
+  private function _dfs($digits, $step) {//走了多少步
+    if ($step == strlen($digits)) {//说明已经找完了数字
       $this->res[] = $this->str;
       return;
     }
 
-    $key = substr($digits, $step, 1);
+    $key = substr($digits, $step, 1);//取一个数字
     $chars = $this->array[$key];
     foreach ($chars as $v) {
+      //这三行树标准化的写法
       $this->str .= $v;
       $this->_dfs($digits, $step + 1);
-      $this->str = substr($this->str, 0, strlen($this->str) - 1);
+      $this->str = substr($this->str, 0, strlen($this->str) - 1);//撤回刚才拼接的最后一个字符
     }
   }
 }
