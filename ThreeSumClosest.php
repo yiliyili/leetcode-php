@@ -7,7 +7,7 @@ class Solution {
    * @return Integer
 
    最接近的三数之和
-   nums = [-1，2，1，-4], 和 target = 1
+   nums = [-1，2，1，-4], 和 target = 1 输出：2
    */
   function threeSumClosest($nums, $target) {
     if (!$nums) return [];
