@@ -36,28 +36,31 @@ class Solution {
 
   public $res = "";
 
-  public $max = 0;
+  public $max = 0;//保存最大长度
   function longestPalindrome($s) {
     if (strlen($s) <= 1) return $s;
 
     for ($i = 0; $i < strlen($s); $i++) {
-      $this->diffusion($s, $i, $i);
-      $this->diffusion($s, $i, $i + 1);
+      $this->diffusion($s, $i, $i);//扩散,回文串为奇数的情况
+      $this->diffusion($s, $i, $i + 1); //回文是偶数
     }
     return $this->res;
   }
 
   private function diffusion($s, $left, $right) {
     while ($left >= 0 && $right < strlen($s) && $s[$left] == $s[$right]) {
-      if ($right - $left + 1 > $this->max) {
-        $this->max = $right - $left + 1;
-        $this->res = substr($s, $left, $right - $left + 1);
+      $tmpLength = $right - $left + 1;
+      if ($tmpLength > $this->max) {//超过才算,相等不算
+        $this->max = $tmpLength;
+        $this->res = substr($s, $left, $tmpLength);
       }
+      // 扩大范围
       $left--;
       $right++;
     }
   }
 
+  //动态规划
   function longestPalindrome2($s) {
     if (strlen($s) <= 1) return $s;
     $res = $s[0];
@@ -69,8 +72,10 @@ class Solution {
     for ($j = 2; $j < strlen($s); $j++) {
       $dp[$j][$j] = true;
       for ($i = 0; $i < $j; $i++) {
-        $dp[$i][$j] = $s[$i] == $s[$j] && ($j - $i <= 2 || $dp[$i + 1][$j - 1]);
-        if ($dp[$i][$j] && $max < $j - $i + 1) {
+        //于子串是否是回文串,可以决定i到j是否是回文串,
+        //先判断$j - $i <= 2 表示如果中间只隔了一个数字,那一定是回文串
+        $dp[$i][$j] = ($s[$i] == $s[$j]) && ($j - $i <= 2 || $dp[$i + 1][$j - 1]);
+        if ($dp[$i][$j] && $max < $j - $i + 1) { //$j - $i + 1是长度
           $max = $j - $i + 1;
           $res = substr($s, $i, $j - $i + 1);
         }
@@ -79,3 +84,8 @@ class Solution {
     return $res;
   }
 }
+
+$str = 'babad';
+$solu = new Solution();
+var_dump( $solu->longestPalindrome($str));
+var_dump( $solu->longestPalindrome2($str));
