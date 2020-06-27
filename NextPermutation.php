@@ -1,4 +1,5 @@
 <?php
+// 31. 下一个排列
 class Solution {
 
   /**
@@ -20,12 +21,13 @@ class Solution {
    1  3  7  4  2  1  //index之后的数字翻转
      index   
 
-   1  3  1  2  4  7
+   1  3  1  2  4  7  //答案
    */
   function nextPermutation(&$nums) {
     $n = count($nums);
-    for ($i = $n - 2; $i >= 0; $i--) {
+    for ($i = $n - 2; $i >= 0; $i--) {//从倒数第二个开始
       if ($nums[$i + 1] > $nums[$i]) {
+        //右到左第一个比逆序的数字大的数字
         for ($j = $n - 1; $j >= 0; $j--) {
           if ($nums[$j] > $nums[$i]) {
             break;
@@ -40,6 +42,7 @@ class Solution {
         return $this->reverse($nums, $left, $right);
       }
     }
+    //已经是最大值的情况下,变为最小值
     return $this->reverse($nums, 0, $n - 1);
   }
 
