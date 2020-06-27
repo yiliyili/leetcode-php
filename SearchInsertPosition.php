@@ -1,4 +1,5 @@
 <?php
+// 35. 搜索插入位置
 class Solution {
 
   /**
@@ -14,7 +15,7 @@ class Solution {
    输入: [1,3,5,6], 7
    输出: 4
 
-   找出数组里第一个大于等于target的数字
+   就是找出数组里第一个大于等于target的数字
    */
   function searchInsert($nums, $target) {
     $left = 0;
@@ -23,6 +24,7 @@ class Solution {
     while ($left <= $right) {
       $mid = floor(($right - $left) / 2) + $left;
       if ($nums[$mid] >= $target) {
+        //注意边界条件
         if ($mid == 0 || $nums[$mid - 1] < $target) {
           $p = $mid;
           break;

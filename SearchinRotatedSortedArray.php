@@ -1,4 +1,5 @@
 <?php
+// 33. 搜索旋转排序数组
 class Solution {
 
   /**
@@ -25,9 +26,9 @@ class Solution {
     $high = count($nums) - 1;
     while ($low <= $high) {
       $mid = floor(($high - $low) / 2) + $low;
-      if ($target == $nums[$mid]) return $mid;
-      if ($nums[$low] <= $nums[$mid]) {
-        if ($nums[$low] <= $target && $target < $nums[$mid]) {
+      if ($target == $nums[$mid]) return $mid;//先把和mid是否相等进行判定了
+      if ($nums[$low] <= $nums[$mid]) {//是正常的省去排列
+        if ($nums[$low] <= $target && $target < $nums[$mid]) {//target还在这个区间内
           $high = $mid - 1;
         } else {
           $low = $mid + 1;
