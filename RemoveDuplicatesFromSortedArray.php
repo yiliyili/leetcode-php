@@ -16,7 +16,7 @@ class Solution {
     if (!$nums) return 0;
 //  双指针
     $i = 0;
-    for ($j = 1; $j < count($nums); $j++) {
+    for ($j = 1; $j < count($nums); $j++) {//从1开始
       if ($nums[$j] != $nums[$i]) {
         $i++;
         $nums[$i] = $nums[$j];//只要找到了不同值,就把不同值放到前边,最终前边都是不同的值

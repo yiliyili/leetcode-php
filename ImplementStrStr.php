@@ -1,4 +1,5 @@
 <?php
+// 28. 实现 strStr()
 class Solution {
 
   /**

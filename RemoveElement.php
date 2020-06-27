@@ -1,4 +1,5 @@
 <?php
+// 27. 移除元素
 class Solution {
 
   /**
@@ -14,7 +15,7 @@ class Solution {
    */
   function removeElement(&$nums, $val) {
     $j = 0;
-    for ($i = 0; $i < count($nums); $i++) {
+    for ($i = 0; $i < count($nums); $i++) {//从0开始
       if ($nums[$i] != $val) {
         $nums[$j] = $nums[$i];
         $j++;
