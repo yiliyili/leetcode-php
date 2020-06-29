@@ -1,4 +1,5 @@
 <?php
+// 46. 全排列
 class Solution {
 
   /**
@@ -20,14 +21,14 @@ class Solution {
     $this->do([], $nums);
     return $this->res;
   }
-
+  //回溯
   function do($array, $nums) {
     if (count($array) == count($nums)) {
       array_push($this->res, $array);
       return;
     }
     for ($i = 0; $i < count($nums); $i++) {
-      if (in_array($nums[$i], $array)) continue;
+      if (in_array($nums[$i], $array)) continue;//去重复数字
       array_push($array, $nums[$i]);
       $this->do($array, $nums);
       array_pop($array);
