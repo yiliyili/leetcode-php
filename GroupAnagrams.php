@@ -1,4 +1,5 @@
 <?php
+// 49. 字母异位词分组
 class Solution {
 
   /**
@@ -25,3 +26,6 @@ class Solution {
     return $result;
   }
 }
+
+$solu = new Solution();
+var_dump( $solu->groupAnagrams(["eat", "tea", "tan", "ate", "nat", "bat"]));

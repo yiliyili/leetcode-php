@@ -1,4 +1,5 @@
 <?php
+// 48. 旋转图像
 class Solution {
 
   /**
@@ -24,7 +25,7 @@ class Solution {
   function rotate(&$matrix) {
     $m = count($matrix);
     $n = count($matrix[0]);
-    for ($i = 0; $i < floor($m / 2); $i++) {
+    for ($i = 0; $i < floor($m / 2); $i++) {//上下交换,只需要一半即可
       for ($j = 0; $j < $n; $j++) {
         $temp = $matrix[$i][$j];
         $matrix[$i][$j] = $matrix[$n - 1 - $i][$j];
@@ -32,7 +33,7 @@ class Solution {
       }
     }
     for ($i = 0; $i < $m; $i++) {
-      for ($j = $i; $j < $n; $j++) {
+      for ($j = $i; $j < $n; $j++) {//右斜线交换,斜线上的数字不用动
         $temp = $matrix[$i][$j];
         $matrix[$i][$j] = $matrix[$j][$i];
         $matrix[$j][$i] = $temp;
@@ -40,7 +41,7 @@ class Solution {
     }
   }
 
-  function $rotate2(&$matrix) {
+  function rotate2(&$matrix) {
     $n = count($matrix);
     for ($i = 0; $i < floor($n / 2); $i++) {
       for ($j = $i; $j < $n - 1 - $i; $j++) {
