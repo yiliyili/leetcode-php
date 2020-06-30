@@ -17,7 +17,7 @@
 
  [[1,4],[0,4]]
  */
-
+// 56. 合并区间
 class Solution {
 
   /**
@@ -25,31 +25,24 @@ class Solution {
    * @return Interval[]
    */
   function merge($intervals) {
-    $ret = [];
-    if (empty($intervals)) return $ret;
-    $intervals = $this->array_sort($intervals);
-      $start = $intervals[0]->start;
-      $end = $intervals[0]->end;
-      array_shift($intervals);
-      foreach ($intervals as $interval) {
-        if ($interval->start <= $end) {
-          $end = max($end,$interval->end);
-        } else {
-          array_push($ret, new Interval($start,$end));
-          $start = $interval->start;
-          $end = $interval->end;
-        }
+      if(count($intervals)<1) return [];
+      // 默认二维数组排序，是根据一维数组的第一个值进行排序的
+      sort($intervals);
+      $j = 0;
+      $ans[$j] = $intervals[0];
+      for($i=1;$i<count($intervals);$i++){
+          $start = $intervals[$i][0];//2  8
+          $end = $intervals[$i][1];//6    10
+          if($start<=$ans[$j][1]){//说明可以合并
+              $ans[$j] = [$ans[$j][0],max($ans[$j][1],$end)];
+          }else{
+              $j++;
+              $ans[$j] = $intervals[$i];
+          }
       }
-      array_push($ret,new Interval($start, $end));
-      return $ret;
-  }
-
-  function array_sort($intervals) {
-    $startArray = [];
-    foreach ($intervals as $interval) {
-      $startArray[] = $interval->start;
-    }
-    array_multisort($startArray, SORT_ASC, $intervals);
-    return $intervals;
+      return $ans;
   }
 }
+
+$solu = new Solution();
+print_r($solu->merge([[1,3],[2,6],[8,10],[15,18]]));

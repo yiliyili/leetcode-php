@@ -1,4 +1,5 @@
 <?php
+// 54. 螺旋矩阵
 class Solution {
 
   /**
@@ -17,17 +18,17 @@ class Solution {
     $ret = [];
     if (count($matrix) == 0 || count($matrix[0]) == 0) return $ret;
     $top = 0;
-    $bottom = count($matrix) - 1;
+    $bottom = count($matrix) - 1;//下
     $left = 0;
-    $right = count($matrix[0]) - 1;
+    $right = count($matrix[0]) - 1;//右
 
     while (true) {
       //from left to right
       for ($i = $left; $i <= $right; $i++) {
         array_push($ret, $matrix[$top][$i]);
       }
-      $top++;
-      if ($left > $right || $top > $bottom) break;
+      $top++;//因为最上边一层遍历完了
+      if ($left > $right || $top > $bottom) break;//比如只有一行或者一列的情况
 
       //from top to bottom
       for ($i = $top; $i <= $bottom; $i++) {

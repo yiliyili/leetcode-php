@@ -17,7 +17,7 @@ class Solution {
         $last = $stack->pop();//pop出栈顶下标
         if (!$stack->isEmpty()) {
           $width = $i - $stack->top() - 1;//注意里边放的不是高度而是下标
-          echo '$i = '.$i. ' top='. $stack->top() . 'width='. $width .'<br/>';
+          // echo '$i = '.$i. ' top='. $stack->top() . 'width='. $width .'<br/>';
           // 第一次算出来的是6,第二次while才是5*宽度2=10
         } else { 
           $width = $i;
