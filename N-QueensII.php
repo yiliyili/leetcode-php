@@ -1,4 +1,5 @@
 <?php
+// 52. N皇后 II
 class Solution {
 
   /**
@@ -9,6 +10,7 @@ class Solution {
   public $pie = [];
   public $na = [];
   public $res = [];
+  // 详见更复杂的n皇后1
   function totalNQueens($n) {
     $this->solve([], $n, 0);
     return count($this->res);
