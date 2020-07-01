@@ -7,6 +7,7 @@
  *     function __construct($val) { $this->val = $val; }
  * }
  */
+// 61. 旋转链表
 class Solution {
 
   /**
@@ -35,12 +36,12 @@ class Solution {
       $p = $p->next;
       $length++;
     }
-    $p->next = $head;
-    for ($i = 1; $i < $length - ($k % $length); $i++) {
+    $p->next = $head;//先做成首尾相连的圈
+    for ($i = 1; $i < $length - ($k % $length); $i++) {//不需要转超过一圈
       $head = $head->next;
     }
     $res = $head->next;
-    $head->next = null;
+    $head->next = null;//再把链表断开
     return $res;
   }
 }
