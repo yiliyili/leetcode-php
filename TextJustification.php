@@ -45,10 +45,10 @@ class Solution {
           $str .= " ";
         }
       } else {//不是最后一行
-        $space_num = floor(($maxWidth - $len) / $space); //每个单词之间空格的平均数
+        $space_num = floor(($maxWidth - $len) / $space); //每个单词之间空格的平均数,注意len中已经算上了单词间空格
         $carry = ($maxWidth - $len) % $space;//地板除法漏了多少个
         for ($i = $start + 1; $i < $next; $i++) {
-          $str .= " ";
+          $str .= " ";//该单词和下一个单词之间至少有一个空格
           for ($k = $space_num; $k > 0; $k--) {
             $str .= " ";
           }

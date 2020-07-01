@@ -1,4 +1,5 @@
 <?php
+// 74. 搜索二维矩阵
 class Solution {
 
   /**
@@ -14,6 +15,7 @@ class Solution {
     target = 3
     输出: true
    */
+  //左程云有更好解法 https://leetcode-cn.com/problems/search-a-2d-matrix/solution/phpsou-suo-er-wei-ju-zhen-by-ruan-shao-xiang/
   function searchMatrix($matrix, $target) {
     if (count($matrix) == 0) return false;
     $m = count($matrix);

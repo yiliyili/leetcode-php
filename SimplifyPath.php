@@ -1,4 +1,5 @@
 <?php
+// 71. 简化路径
 class Solution {
 
   /**
@@ -13,13 +14,13 @@ class Solution {
     $stack = [];
     foreach ($array as $v) {
       if ($v == "..") {
-        if (!empty($stack)) {
-          array_pop($stack);
+        if (!empty($stack)) {//有没有才能决定能不能上去一级
+          array_pop($stack);//尾部弹出
         }
       } else if ($v != "" && $v != ".") {
         array_push($stack, $v);
       }
     }
-    return empty($stack) ? '/' : "/" . implode('/', $stack);
+    return empty($stack) ? '/' : "/" . implode('/', $stack);//连接
   }
 }

@@ -1,4 +1,5 @@
 <?php
+// 73. 矩阵置零
 class Solution {
 
   /**
@@ -18,6 +19,30 @@ class Solution {
       [0,3,1,0]
     ]
    */
+  
+      function setZeroes2(&$matrix) {
+        $y = [];
+        //找出横轴0对应的key后，将横轴置0
+        foreach ($matrix as $key => &$val){
+            if(in_array(0, $val)) {
+                foreach ($val as $k => $v) {
+                    if($v == 0) {
+                        $y[] = $k;//存放哪些列需要置为0
+                    }else{
+                        $val[$k] = 0;
+                    }
+                }
+            }
+        }
+        
+        //纵轴置0
+        array_walk_recursive($matrix, function(&$val, $key) use ($y){//$key是列,$val是值
+            if(in_array($key, $y)) {
+                $val = 0;
+            }
+        });
+    }
+
   function setZeroes(&$matrix) {
     $m = count($matrix);
     $n = count($matrix[0]);
