@@ -1,4 +1,5 @@
 <?php
+// 78. 子集
 class Solution {
 
   /**
@@ -19,11 +20,11 @@ class Solution {
    */
   public $res = [];
   function subsets($nums) {
-    if (!$nums) return [];
+    if (!$nums) return [];//空数组直接返回
     $this->do([], $nums, 0);
     return $this->res;
   }
-
+  //回溯
   function do($array, $nums, $start) {
     array_push($this->res, $array);
     for ($i = $start; $i < count($nums); $i++) {
@@ -33,3 +34,6 @@ class Solution {
     }
   }
 }
+
+$solu = new Solution();
+var_dump($solu->subsets([1,2,3]));

@@ -11,6 +11,7 @@ class Solution {
    words = ["foo","bar"]
 
    */
+  //滑动窗口
   function findSubstring($s, $words) {
     $map = [];
     $ret = [];

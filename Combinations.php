@@ -1,4 +1,5 @@
 <?php
+// 77. 组合
 class Solution {
 
   /**
@@ -21,15 +22,15 @@ class Solution {
     $this->do([], $n, $k, 1);
     return $this->res;
   }
-
+  //回溯
   function do($array, $n, $k, $start) {
     if ($k == 0) {
       array_push($this->res, $array);
       return;
     }
-    for ($i = $start; $i <= $n; $i++) {
+    for ($i = $start; $i <= $n; $i++) {//注意加等于,包括n
       array_push($array, $i);
-      $this->do($array, $n, $k - 1, $i + 1);
+      $this->do($array, $n, $k - 1, $i + 1);//可以再选$k-1个
       array_pop($array);
     }
   }
