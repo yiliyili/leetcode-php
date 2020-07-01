@@ -1,4 +1,5 @@
 <?php
+// 59. 螺旋矩阵 II  
 class Solution {
 
   /**
@@ -17,12 +18,14 @@ class Solution {
     1 => 9
    */
   function generateMatrix($n) {
+    // 跟54题对比
     $top = 0;
     $bottom = $n - 1;
     $left = 0;
     $right = $n - 1;
     $num = 1;
-    $matrix = [];
+    // $matrix = [];
+    $matrix = array_fill(0,$n,array_fill(0,$n,0));//填充,防止生成的键顺序错乱
     while ($top <= $bottom && $left <= $right) {
       //from left to right
       for ($i = $left; $i <= $right; $i++) {
@@ -48,10 +51,15 @@ class Solution {
       }
       $left++;
     }
-    foreach ($matrix as $key => $v) {
-      ksort($v);
-      $matrix[$key] = $v;
-    }
+    // var_dump($matrix);//键的顺序
+    // foreach ($matrix as $key => $v) {
+    //   ksort($v);
+    //   $matrix[$key] = $v;
+    // }
     return $matrix;
   }
+
 }
+
+$solu = new Solution();
+print_r($solu->generateMatrix(6));

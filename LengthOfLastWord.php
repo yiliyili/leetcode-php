@@ -1,4 +1,5 @@
 <?php
+// 58. 最后一个单词的长度
 class Solution {
 
   /**
@@ -11,7 +12,7 @@ class Solution {
   function lengthOfLastWord($s) {
     $s = rtrim($s);
     $len = 0;
-    for ($i = strlen($s) - 1; $i >= 0; $i--) {
+    for ($i = strlen($s) - 1; $i >= 0; $i--) {//倒着遍历
       if ($s[$i] == " ") {
         return $len;
       }
