@@ -8,6 +8,7 @@
  *     function __construct($value) { $this->val = $value; }
  * }
  */
+// 99. 恢复二叉搜索树
 class Solution {
 
   /**
@@ -16,6 +17,7 @@ class Solution {
    *
    * @github https://github.com/yumindayu/leetcode-php
 
+题意:只有2个发生了交换
 
     3
    / \
@@ -25,11 +27,11 @@ class Solution {
 
   1 3 2 4 
    */
-  public $firstNode;
+  public $firstNode;//第一个认为异常
 
-  public $secondNode;
+  public $secondNode;//第二个认为异常
 
-  public $pre;
+  public $pre;//前一个节点
   function recoverTree($root) {
     if ($root == null) return;
     $this->helper($root);
@@ -38,20 +40,24 @@ class Solution {
     $this->secondNode->val = $temp;
   }
 
+  //利用中序遍历是升序的结果
   function helper($root) {
     if ($root == null) return;
+    //遍历左子树
     $this->helper($root->left);
-    if ($this->pre == null) {
+    //中间是处理过程
+    if ($this->pre == null) {//遍历第一个节点时才是null
       $this->pre = $root;
     } else {
-      if ($this->pre->val > $root->val) {
+      if ($this->pre->val > $root->val) {//找到了
         if ($this->firstNode == null) {
           $this->firstNode = $this->pre;
         }
-        $this->secondNode = $root;
+        $this->secondNode = $root;//只更新second
       }
-      $this->pre = $root;
+      $this->pre = $root;//更新pre,因为要一致跟pre比较
     }
+    //遍历右子树
     $this->helper($root->right);
   }
 }

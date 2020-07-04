@@ -1,4 +1,5 @@
 <?php
+// 97. 交错字符串
 class Solution {
 
   /**
@@ -17,7 +18,7 @@ class Solution {
              a
                c
    输出: true
-
+    aa是前2个字符
    dp[i][j] 表示s1的前i个字符到s2的前j个字符是否是s3的前i+j个字符
 
    dp[i][j] = dp[i-1][j] && s1[i-1]==s3[i-1+j] or
@@ -26,17 +27,19 @@ class Solution {
   function isInterleave($s1, $s2, $s3) {
     $m = strlen($s1);
     $n = strlen($s2);
-    if ($m + $n != strlen($s3)) return false;
+    if ($m + $n != strlen($s3)) return false;//长度相等
     $dp = [];
     $dp[0][0] = true;
+    // 初始化
     for ($i = 1; $i <= $m; $i++) {
+      //不要s2的情况
       $dp[$i][0] = $dp[$i - 1][0] && $s1[$i - 1] == $s3[$i - 1];
     }
     for ($i = 1; $i <= $n; $i++) {
       $dp[0][$i] = $dp[0][$i - 1] && $s2[$i - 1] == $s3[$i - 1];
     }
     for ($i = 1; $i <= $m; $i++) {
-      for ($j = 1; $j <= $n; $j++) {
+      for ($j = 1; $j <= $n; $j++) {//只要满足一种即可
         $dp[$i][$j] = ($dp[$i - 1][$j] && $s1[$i - 1] == $s3[$i - 1 + $j]) || ($dp[$i][$j - 1] && $s2[$j - 1] == $s3[$j - 1 + $i]);
       }
     }
