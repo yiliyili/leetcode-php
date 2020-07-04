@@ -24,20 +24,21 @@ class Solution {
         if ($res) return true;
       }
     }
-    return false;
+    return false;//不进入循环的情况
   }
 
   function helper($board, $i, $j, $word, $start) {
-    if ($start >= strlen($word)) {//找到了 ==也可以
+    if ($start >= strlen($word)) {//找到了 ==也可以,因为上一次调用是$start + 1所以这里能够和length相等
       return true;
     }
+    //先确定范围,再判断$board[$i][$j]
     if ($i < 0 || $i >= count($board) || $j < 0 || $j >= count($board[0]) || $board[$i][$j] != $word[$start]) {
       return false;
     }
-    $c = $word[$start];
+    $c = $word[$start];//保存当前字符,之后进行还原
     $board[$i][$j] = "#";//表示这个字母已经找过了
     // var_dump($board);
-    //也可以用方向数组
+    //也可以用方向数组,有一个方向找到就行
     $res =  ($this->helper($board, $i + 1, $j, $word, $start + 1) ||
       $this->helper($board, $i - 1, $j, $word, $start + 1) ||
       $this->helper($board, $i, $j + 1, $word, $start + 1) ||

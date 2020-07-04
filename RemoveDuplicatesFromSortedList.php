@@ -17,6 +17,7 @@ class Solution {
    输入: 1->1->2
    输出: 1->2
    */
+  //对比82
   function deleteDuplicates($head) {
     if (!$head) return null;
     $cur = $head;

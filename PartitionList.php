@@ -7,6 +7,7 @@
  *     function __construct($val) { $this->val = $val; }
  * }
  */
+// 86. 分隔链表
 class Solution {
 
 
@@ -17,9 +18,10 @@ class Solution {
    *
    * @github https://github.com/yumindayu/leetcode-php
 
-   输入: head = 1->4->3->2->5->2, x = 3
+   输入: head = 1->4->3->2->5->2, x = 3  4和3的相对顺序不能改
    输出: 1->2->2->4->3->5
    */
+  //2个辅助链表
   function partition($head, $x) {
     $smallHead = new ListNode(0);
     $bigHead = new ListNode(0);
