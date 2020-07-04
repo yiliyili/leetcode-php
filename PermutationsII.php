@@ -15,7 +15,7 @@ class Solution {
     ]
    */
   public $res = [];
-  public $visited = [];//某个下标对应的元素是否被用于
+  public $visited = [];//某个下标对应的元素是否被用于,排列和元素顺序有关,所以要记忆使用情况
 
   function permuteUnique($nums) {
     sort($nums);//排序
@@ -28,7 +28,7 @@ class Solution {
       array_push($this->res, $array);
       return;
     }
-    for ($i = 0; $i < count($nums); $i++) {
+    for ($i = 0; $i < count($nums); $i++) {//因为排列的第一个,第二个...元素不确定,所以下标从0开始,让每个元素都有机会选中
       if (isset($this->visited[$i]) && $this->visited[$i] == 1) continue;//这个数是否用过
       if ($i > 0 && $nums[$i] == $nums[$i - 1] && $this->visited[$i - 1] == 0) continue;//题解中画递归树,模拟深度优先代码的执行过程,会发现选第二个1时,第一个1刚好被撤销,所以第一个1被选进来造成重复,需要进行剪枝
       $this->visited[$i] = 1;
