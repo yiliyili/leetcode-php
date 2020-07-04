@@ -8,6 +8,7 @@
  *     function __construct($value) { $this->val = $value; }
  * }
  */
+// 102. 二叉树的层序遍历
 class Solution {
 
   /**
@@ -27,6 +28,7 @@ class Solution {
     [15,7]
   ]
    */
+  //队列
   function levelOrder($root) {
     $res = [];
     if (!$root) return $res;
@@ -34,7 +36,7 @@ class Solution {
     array_push($queue, $root);
     $level = 0;
     while (!empty($queue)) {
-      foreach ($queue as $r) {
+      foreach ($queue as $r) {//其实每次遍历完一层,下一层又放进去了,所以while循环能继续执行
         if ($r->left != null) array_push($queue, $r->left);
         if ($r->right != null) array_push($queue, $r->right);
         $res[$level][] = $r->val;
