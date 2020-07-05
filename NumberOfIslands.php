@@ -1,4 +1,5 @@
 <?php
+// 200. 岛屿数量
 class Solution {
 
 	public $root = [];
@@ -8,6 +9,7 @@ class Solution {
 	 * @param String[][] $grid
 	 * @return Integer
 	 */
+	//并查集做法
 	function numIslands($grid) {
 		$m = count($grid);
 		$n = count($grid[0]);

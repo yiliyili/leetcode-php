@@ -2,7 +2,7 @@
 class TrieNode
 {
     public $char;
-    public $is_end = false;
+    public $is_end = false;//是不是一个单词的结束
     public $children;
 
     public function __construct()
@@ -10,6 +10,7 @@ class TrieNode
         $this->children = [];
     }
 }
+// 208. 实现 Trie (前缀树)
 class Trie
 {
     public $root;
@@ -27,20 +28,22 @@ class Trie
      * @param String $word
      * @return NULL
      */
+    // 更好的C:\myshop\daimapianduan\phpalgo\leetcode208.php
     public function insert($word)
     {
         // apple
         // app
         $root = $this->root;
         for ($i = 0; $i < strlen($word); $i++) {
-            if (!isset($root->children[$word[$i]])) {
+            if (!isset($root->children[$word[$i]])) {//有没有这个字符
                 $root->children[$word[$i]]       = new TrieNode();
                 $root->children[$word[$i]]->char = $word[$i];
             }
+            //其实可以拿到循环外做判断
             if ($i == strlen($word) - 1) {
-                $root->children[$word[$i]]->is_end = true;
+                $root->children[$word[$i]]->is_end = true;//这个字符是单词结尾
             }
-            $root = $root->children[$word[$i]];
+            $root = $root->children[$word[$i]];//移动到下一个节点
         }
     }
 
@@ -52,9 +55,11 @@ class Trie
     public function search($word)
     {
         // apple
+        $root = $this->root;
         return $this->_search($root, $word);
     }
 
+    //复杂,题解中有更简单方式
     public function _search($root, $word)
     {
         if ($word == "") {

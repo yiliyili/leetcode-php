@@ -25,7 +25,7 @@ class Solution {
       }
     }
   }
-
+  //染色的情况不需要回溯,改了值不需要改回来
   function _floodfill(&$grid, $row, $col) {
     if ($row < 0 || $row >= count($grid) || $col < 0 || $col >= count($grid[0])) {
       return;
@@ -33,7 +33,7 @@ class Solution {
     if ($grid[$row][$col] == "0") {
       return;
     }
-    $grid[$i][$j] = "0";
+    $grid[$i][$j] = "0";//染色
     $this->_floodfill($grid, $row, $col + 1);
     $this->_floodfill($grid, $row + 1, $col);
     $this->_floodfill($grid, $row - 1, $col);

@@ -59,7 +59,7 @@ postOrder [7,4,2,5,8,6,3,1] //最后一个值是根节点
     $key = array_search($x, $inorder);
 
     $node->left = $this->buildTree2(array_slice($inorder, 0, $key), array_slice($postOrder, 0, $key));
-    $node->right = $this->buildTree2(array_slice($inorder, $key + 1), array_slice($postOrder, $key));
+    $node->right = $this->buildTree2(array_slice($inorder, $key + 1), array_slice($postOrder, $key));//因为后序数组最后的1被pop了
     return $node;
   }
 }
