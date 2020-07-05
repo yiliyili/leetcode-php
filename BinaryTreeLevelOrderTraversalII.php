@@ -8,6 +8,7 @@
  *     function __construct($value) { $this->val = $value; }
  * }
  */
+// 107. 二叉树的层次遍历 II
 class Solution {
 
   /**
@@ -44,9 +45,10 @@ class Solution {
         if ($r->right != null) {
           array_push($queue, $r->right);
         }
-        array_shift($queue);
+        array_shift($queue);//减少队列长度,不然一直在while循环中
       }
-      array_unshift($res, $list);
+      //每froeach万一次,把结果放进res中
+      array_unshift($res, $list); //比如[9,20]进行头插
     }
     return $res;
   }
