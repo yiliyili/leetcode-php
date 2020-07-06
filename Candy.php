@@ -1,4 +1,5 @@
 <?php
+// 135. 分发糖果
 class Solution {
 
   /**
@@ -19,15 +20,18 @@ class Solution {
    */
   function candy($ratings) {
     $candy = [];
+    //每人先发一个
     for ($i = 0; $i < count($ratings); $i++) {
       $candy[$i] = 1;
     }
     for ($i = 1; $i < count($ratings); $i++) {
-      if ($ratings[$i] > $ratings[$i - 1]) {
+      if ($ratings[$i] > $ratings[$i - 1]) {//比左边的大
         $candy[$i] = $candy[$i - 1] + 1;
       }
     }
+    // 尾部开始扫
     for ($i = count($ratings) - 2; $i >= 0; $i--) {
+      //光第一个条件还不够,因为上边已经发过一轮了
       if ($ratings[$i] > $ratings[$i + 1] && $candy[$i] <= $candy[$i + 1]) {
         $candy[$i] = $candy[$i + 1] + 1;
       }
