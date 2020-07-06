@@ -40,7 +40,7 @@ class Solution {
     }
     return substr($min_str, 0, min($left, $right));//截取不能超出两端
   }
-
+  //是不是其他单词的前缀
   private function _isPrefix($strs, $prefix) {
     foreach ($strs as $s) {
       if (substr($s, 0, strlen($prefix)) != $prefix) {

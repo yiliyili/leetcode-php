@@ -1,4 +1,5 @@
 <?php
+// 63. 不同路径 II
 class Solution {
 
   /**
@@ -30,7 +31,7 @@ class Solution {
         //处理非边缘情况,从左往右,从上往下写表
         for ($i = 1; $i < $m; $i++) {//行
             for ($j = 1; $j < $n; $j++) {//列
-                if ($obstacleGrid[$i][$j] == 1) {
+                if ($obstacleGrid[$i][$j] == 1) {//障碍
                     $dp[$i][$j] = 0;
                 } else {
                     $dp[$i][$j] = $dp[$i - 1][$j] + $dp[$i][$j - 1];
