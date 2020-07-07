@@ -1,4 +1,5 @@
 <?php
+// 1160. 拼写单词
 class Solution {
 
   /**
@@ -33,7 +34,7 @@ class Solution {
     }
     return $length;
   }
-
+  //计算单词种类和个数是否正确
   public function checkWord($map, $word) {
     for ($i = 0; $i < strlen($word); $i++) {
       if (!isset($map[$word[$i]]) || $map[$word[$i]] == 0) {

@@ -1,4 +1,5 @@
 <?php
+// 1071. 字符串的最大公因子
 class Solution {
 
   /**
@@ -15,13 +16,14 @@ class Solution {
 
    */
   function gcdOfStrings($str1, $str2) {
-    if ($str1 . $str2 != $str . $str1) return "";
+    if (empty($str1) || empty($str2)) return '';
+    if ($str1 . $str2 != $str2 . $str1) return "";//相连相等才会有公因子
     return substr($str1, 0, $this->gcd(strlen($str1), strlen($str2)));
   }
-
+  //欧几里得算法
   function gcd($s1, $s2) {
     if ($s1 < $s2) {
-      $this->gcd($s2, $s1);
+      $this->gcd($s2, $s1);//换一下
     }
     return $s2 == 0 ? $s1 : $this->gcd($s2, $s1 % $s2);
   }

@@ -14,6 +14,7 @@ class Solution {
     $length = strlen($S);
     $str = $S[0];
     $count = 1;
+    $new_str = '';
     $new_str .= $str;
     for ($i = 1; $i < $length; $i++) {
       if ($S[$i] == $str) {
@@ -26,6 +27,9 @@ class Solution {
       }
     }
     $new_str .= $count;
-    return strlen($new_str) >= $length : $S : $new_str;
+    return strlen($new_str) >= $length ? $S : $new_str;
   }
 }
+
+$obj = new Solution;
+var_dump($obj->compressString('aabcccccaaa'));

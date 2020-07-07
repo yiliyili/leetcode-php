@@ -1,4 +1,5 @@
 <?php
+// 121. 买卖股票的最佳时机
 class Solution {
 
   /**
@@ -16,7 +17,7 @@ class Solution {
 
     for ($i = 0; $i < count($prices); $i++) {
       $min = min($min, $prices[$i]);
-      $max = max($max, $prices[$i] - $min);
+      $max = max($max, $prices[$i] - $min);//最大利润
     }
     return $max;
   }

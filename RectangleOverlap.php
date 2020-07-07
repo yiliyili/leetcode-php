@@ -1,4 +1,5 @@
 <?php
+// 836矩形重叠
 class Solution {
 
   /**
@@ -6,7 +7,7 @@ class Solution {
    * @param Integer[] $rec2
    * @return Boolean
    * @github https://github.com/yumindayu/leetcode-php
-
+边和点不算重叠
           ____________________x4,y4
           |                   |
    _______|______x2,y2        |
@@ -25,11 +26,13 @@ x3,y3         |                   |
               |___________________|
             x1,y1
    */
+  //考虑不重叠的情况,取反 两个矩形互相判断
   function isRectangleOverlap($rec1, $rec2) {
     // $rec1[2] <= $rec2[0]; //x 轴：rec1 最右边和 rec2 最左边比较
     // $rec1[3] <= $rec2[1]; //y 轴：rec1 最上 和rec2 的最下比较
     // $rec2[2] <= $rec1[0];
     // $rec2[3] <= $rec1[1];
-    return !($rec1[2] <= $rec2[0] || $rec1[3] <= $rec2[1] || $rec2[2] <= $rec1[0] || $rec2[3] <= $rec1[1]);
+    return !($rec1[2] <= $rec2[0] || $rec1[3] <= $rec2[1] || 
+      $rec2[2] <= $rec1[0] || $rec2[3] <= $rec1[1]);
   }
 }

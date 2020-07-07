@@ -1,4 +1,5 @@
 <?php
+// 169. 多数元素
 class Solution {
 
   /**
@@ -15,9 +16,10 @@ class Solution {
 num     2
 count   1
    */
+  //摩尔投票法
   function majorityElement($nums) {
     $start = $nums[0];
-    $count = 1;
+    $count = 1;//$start有一个了
 
     for ($i = 1; $i < count($nums); $i++) {
       if ($nums[$i] == $start) {
@@ -27,7 +29,7 @@ count   1
         if ($count == 0) {
           $start = $nums[$i + 1];
           $count = 1;
-          $i++;
+          $i++;//再移动到下一个元素
         }
       }
     }
