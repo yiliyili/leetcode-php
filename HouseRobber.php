@@ -1,18 +1,20 @@
 <?php
+// 198. 打家劫舍
 class Solution {
 
   /**
    * @param Integer[] $nums
    * @return Integer
    * @github https://github.com/yumindayu/leetcode-php
-
+非负整数数组
    输入: [1,2,3,1]
    输出: 4
 
    输入: [2,7,9,3,1]
 
    输出: 12
-
+比如 [2,1,9,1000,1] 中间隔2个能获得最大
+  
    dp[i] 到i节点时候的最大值
 
 

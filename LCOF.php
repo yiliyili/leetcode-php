@@ -1,6 +1,7 @@
 <?php
+// 59 - II. 队列的最大值
 class MaxQueue {
-  public $max_value_queue;
+  public $max_value_queue;//存放当前最大值的队列
 
   public $queue;
   /**
@@ -28,7 +29,7 @@ class MaxQueue {
   function push_back($value) {
     array_push($this->queue, $value);
     while (!empty($this->max_value_queue) && $this->max_value_queue[count($this->max_value_queue) -1] < $value) {
-      array_pop($this->max_value_queue);
+      array_pop($this->max_value_queue);//弹出非最大值
     }
     array_push($this->max_value_queue, $value);
 

@@ -22,7 +22,7 @@ class Solution {
    */
   function calculateMinimumHP($dungeon) {
     $m = count($dungeon) - 1;//先-1
-    $n = count($dungeon[0] - 1);
+    $n = count($dungeon[0]) - 1;
 
     $dp[$m][$n] = max(1, 1 - $dungeon[$m][$n]); //至少要有一点血量
     //走最后1列的情况,只有唯一一种走法 先右后下
