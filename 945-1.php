@@ -1,4 +1,5 @@
 <?php
+// 945-使数组唯一的最小增量
 class Solution
 {
 
@@ -7,6 +8,7 @@ class Solution
      * @return Integer
      * @github https://github.com/yumindayu/leetcode-php
      */
+    //会超时
     public function minIncrementForUnique($A)
     {
         if (!$A) {

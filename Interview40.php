@@ -1,4 +1,5 @@
 <?php
+// 最小的k个数 最大堆
 class Solution
 {
 
@@ -22,14 +23,14 @@ class Solution
         }
 
         $heap = new \SplMaxHeap;
-        for ($i = 0; $i < $k; $i++) {
-            $heap->insert($arr[$i]);
+        for ($i = 0; $i < $k; $i++) {//先插入k个
+            $heap->insert($arr[$i]);//自动堆化
         }
         for ($i = $k; $i < count($arr); $i++) {
             $top = $heap->top();
             if ($arr[$i] < $top) {
-                $heap->extract();
-                $heap->insert($arr[$i]);
+                $heap->extract();//弹出最大值
+                $heap->insert($arr[$i]);//插入较小的值
             }
         }
         $ret = [];
@@ -39,3 +40,8 @@ class Solution
         return $ret;
     }
 }
+
+$arr = [1,5,6,2,7,10];
+$k = 3;
+$solu = new Solution();
+var_dump( $solu->getLeastNumbers($arr, $k));

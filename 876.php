@@ -7,6 +7,7 @@
  *     function __construct($val) { $this->val = $val; }
  * }
  */
+// 876. 链表的中间结点
 class Solution
 {
 
@@ -14,7 +15,7 @@ class Solution
      * @param ListNode $head
      * @return ListNode
      * @github https://github.com/yumindayu/leetcode-php
-
+如果有两个中间结点，则返回第二个中间结点。
     1 -> 2 -> 3 -> 4 -> 5 -> 6
 
      */
@@ -42,6 +43,7 @@ class Solution
         }
 
     }
+    //快慢指针
     public function middleNode2($head)
     {
         $slow = $fast = $head;
