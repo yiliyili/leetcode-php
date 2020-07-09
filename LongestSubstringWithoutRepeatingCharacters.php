@@ -1,10 +1,11 @@
 <?php
+   // 3无重复字符的最长子串
 class Solution {
 
   /**
    * @param String $s
    * @return Integer
-   无重复字符的最长子串
+
   
 
    a b c a b c b b

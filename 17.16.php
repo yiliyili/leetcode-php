@@ -1,4 +1,5 @@
 <?php
+//和打家劫舍一样
 class Solution
 {
 

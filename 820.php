@@ -1,4 +1,5 @@
 <?php
+// 820. 单词的压缩编码
 class Solution
 {
 
@@ -10,7 +11,7 @@ class Solution
     public function minimumLengthEncoding($words)
     {
         $count = 0;
-        $data  = array_map(function ($a) {return strrev($a);}, $words);
+        $data  = array_map(function ($a) {return strrev($a);}, $words);//反转
         usort($data, function ($a, $b) {
             return strlen($b) <=> strlen($a);
         });
