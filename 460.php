@@ -1,4 +1,6 @@
 <?php
+// 460. LFU缓存
+// 维护hashmap和双向链表
 class Node
 {
     public $key;
@@ -35,6 +37,7 @@ class doublyLinkedList
     {
         $node->frequency++;
         $prev = $node->prev;
+        //频次越高的越往头部放,相同也往前边放
         while ($prev->frequency <= $node->frequency) {
             $start = $prev->prev;
             $end   = $node->next;
@@ -79,7 +82,7 @@ class LFUCache
 
     public $linkList;
     public $cache = [];
-    public $capacity;
+    public $capacity;//容量
 
     /**
      * @param Integer $capacity

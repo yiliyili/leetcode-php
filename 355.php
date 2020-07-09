@@ -1,4 +1,5 @@
 <?php
+// 355-设计推特  优先队列
 class Twitter
 {
     public $follower_root = [];
@@ -82,6 +83,7 @@ class Twitter
      * @param Integer $followeeId
      * @return NULL
      */
+    //可以用redis的set
     public function follow($followerId, $followeeId)
     {
         if (isset($this->follower_root[$followerId])) {

@@ -1,6 +1,7 @@
 <?php
 ini_set("display_errors", 1);
 error_reporting(E_ALL);
+// 518零钱兑换2  
 class Solution
 {
 
@@ -9,6 +10,7 @@ class Solution
      * @param Integer[] $coins
      * @return Integer
      */
+    // 动态规划
     public function change($amount, $coins)
     {
         if (!$amount) {
@@ -21,7 +23,7 @@ class Solution
         }
         for ($i = 0; $i < count($coins); $i++) {
             $dp[$coins[$i]] += 1;
-            for ($j = $coins[$i]; $j <= $amount; $j++) {
+            for ($j = $coins[$i]; $j <= $amount; $j++) {//注意$j的取值
                 $dp[$j] += $dp[$j - $coins[$i]];
             }
         }
