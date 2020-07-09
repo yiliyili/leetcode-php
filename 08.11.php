@@ -28,7 +28,7 @@ class Solution
             }
         }
 
-        return $dp[$n] % 1000000007;
+        return $dp[$n] % 1000000007;//题目要求的
     }
 }
 

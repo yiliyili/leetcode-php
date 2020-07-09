@@ -21,7 +21,7 @@ class Solution
         for ($i = 0; $i <= $amount; $i++) {
             $dp[$i] = 0;
         }
-        for ($i = 0; $i < count($coins); $i++) {
+        for ($i = 0; $i < count($coins); $i++) {//每一次循环加进来的是新硬币,所以和之前的并不会重复
             $dp[$coins[$i]] += 1;
             for ($j = $coins[$i]; $j <= $amount; $j++) {//注意$j的取值
                 $dp[$j] += $dp[$j - $coins[$i]];
