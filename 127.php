@@ -1,4 +1,5 @@
 <?php
+// 127. 单词接龙 双端bfs
 class Solution
 {
 
@@ -22,19 +23,21 @@ class Solution
      */
     public function ladderLength($beginWord, $endWord, $wordList)
     {
+        //交换后,判断单词是否存在就是o(1)的复杂度了
         $wordsArray = array_flip($wordList);
-        if (!isset($wordsArray[$endWord])) {
+        if (!isset($wordsArray[$endWord])) {//结束单词必须要存在
             return 0;
         }
 
         $beginArray             = [];
         $endArray               = [];
-        $visited                = [];
+        $visited                = [];//该单词是否访问过
         $len                    = 1;
         $beginArray[$beginWord] = 1;
         $endArray[$endWord]     = 1;
         while (!empty($beginArray)) {
-            if (count($beginArray) > count($endArray)) {
+            if (count($beginArray) > count($endArray)) {//谁少就遍历谁,循环中遍历次数少
+                // 交换
                 $tmp        = $beginArray;
                 $beginArray = $endArray;
                 $endArray   = $tmp;
@@ -42,23 +45,24 @@ class Solution
             $temp = [];
             foreach ($beginArray as $word => $value) {
                 for ($i = 0; $i < strlen($word); $i++) {
-                    for ($c = 'a'; $c <= 'z'; $c++) {
+                    for ($c = 'a'; $c <= 'z'; $c++) {//挨个挨个换字母
                         $old      = $word[$i];
-                        $word[$i] = $c;
-                        if (isset($endArray[$word])) {
+                        $word[$i] = $c;//替换单词中的字母
+                        if (isset($endArray[$word])) {//O(1)的
                             return $len + 1;
                         }
+                        //未访问过的 且 是在wordsArray中的才能放入队列中
                         if (!isset($visited[$word]) && isset($wordsArray[$word])) {
                             $temp[$word]    = 1;
                             $visited[$word] = 1;
                         }
-                        $word[$i] = $old;
+                        $word[$i] = $old;//再还原回来
                     }
                 }
             }
-            $beginArray = $temp;
-            $len++;
+            $beginArray = $temp;//下一层的数组,冲洗赋值
+            $len++;//变换长度+1
         }
-        return 0;
+        return 0;//避免["hot","dog"]这种情况
     }
 }
