@@ -28,9 +28,9 @@ class Solution {
       $node = $node->next;
     }
     //反转前k个
-    $new_head = $this->reverse($head, $node);
+    $new_head = $this->reverse($head, $node);//对象作为参数,修改属性
     //上一行其实已经把head修改为k个中最末尾节点,下一个指向的是null
-    // var_dump($head->next);//null
+    var_dump($head->next);//null
     $head->next = $this->reverseKGroup($node, $k);
     return $new_head;
   }
@@ -67,7 +67,7 @@ function createLinkedList($arr)
     
     return $linkedList[0];
 }
-$l1 = createLinkedList([1,2,3,4,5]);
+$l1 = createLinkedList([1,2,3,4,5,6,7,8,9]);
 
 
 $solution = new Solution();

@@ -8,6 +8,7 @@ class Solution {
    * @param Integer[] $heights
    * @return Integer
    */
+  // 单调栈
   function largestRectangleArea($heights) {
     array_push($heights, 0);//避免一直递增没法计算面积,
     $stack = new SplStack;
