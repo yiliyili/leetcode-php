@@ -24,12 +24,12 @@ class Solution {
         $y = [];
         //找出横轴0对应的key后，将横轴置0
         foreach ($matrix as $key => &$val){
-            if(in_array(0, $val)) {
+            if(in_array(0, $val)) {//这一行有0存在
                 foreach ($val as $k => $v) {
                     if($v == 0) {
                         $y[] = $k;//存放哪些列需要置为0
                     }else{
-                        $val[$k] = 0;
+                        $val[$k] = 0;//把这一行不为0的改为0
                     }
                 }
             }

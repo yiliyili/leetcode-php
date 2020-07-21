@@ -43,8 +43,9 @@ postOrder [7,4,2,5,8,6,3,1] //最后一个值是根节点
     $x = array_shift($preorder);
     $node = new TreeNode($x);
     $key = array_search($x, $inorder);
-
+    //因为先序的数组已经被弹出了一个值
     $node->left = $this->buildTree(array_slice($preorder, 0, $key), array_slice($inorder, 0, $key));
+    //因为先序的数组已经被弹出了一个值
     $node->right = $this->buildTree(array_slice($preorder, $key), array_slice($inorder, $key + 1));
 
     return $node;
@@ -59,7 +60,8 @@ postOrder [7,4,2,5,8,6,3,1] //最后一个值是根节点
     $key = array_search($x, $inorder);
 
     $node->left = $this->buildTree2(array_slice($inorder, 0, $key), array_slice($postOrder, 0, $key));
-    $node->right = $this->buildTree2(array_slice($inorder, $key + 1), array_slice($postOrder, $key));//因为后序数组最后的1被pop了
+    //因为后序数组最后的1被pop了
+    $node->right = $this->buildTree2(array_slice($inorder, $key + 1), array_slice($postOrder, $key));
     return $node;
   }
 }

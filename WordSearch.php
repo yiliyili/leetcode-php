@@ -20,7 +20,7 @@ class Solution {
   function exist($board, $word) {
     for ($i = 0; $i < count($board); $i++) {
       for ($j = 0; $j < count($board[0]); $j++) {//从A开始试探,然后再从B开始
-        $res = $this->helper($board, $i, $j, $word, 0);
+        $res = $this->helper($board, $i, $j, $word, 0);//有2个参数是矩阵坐标i,j 有一个参数是word的下标
         if ($res) return true;
       }
     }
