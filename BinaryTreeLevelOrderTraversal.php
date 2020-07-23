@@ -37,12 +37,12 @@ class Solution {
     $level = 0;
     while (!empty($queue)) {
       foreach ($queue as $r) {//其实每次遍历完一层,下一层又放进去了,所以while循环能继续执行
-        if ($r->left != null) array_push($queue, $r->left);
+        if ($r->left != null) array_push($queue, $r->left);//不会影响本次foreach的执行次数
         if ($r->right != null) array_push($queue, $r->right);
         $res[$level][] = $r->val;
-        array_shift($queue);
+        array_shift($queue);//虽然第一次这里边还有2个元素,但是foreach依然会中止执行
       }
-      $level++;
+      $level++;//加一层
     }
     return $res;
   }

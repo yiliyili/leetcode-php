@@ -21,7 +21,7 @@ class Solution {
     $max = $nums[0];
     for ($i = 1; $i < count($nums); $i++) {
       $dp[$i] = $dp[$i - 1] < 0 ? $nums[$i] : $dp[$i - 1] + $nums[$i];//负数加了反而小
-      $max = max($max, $dp[$i]);
+      $max = max($max, $dp[$i]);//也可以放到循环外边,再循环一次$dp,得到最大值
     }
     return $max;
   }

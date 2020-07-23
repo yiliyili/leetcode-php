@@ -26,7 +26,7 @@ class Solution {
     $res = 0;
     $heights = [];
     for ($i = 0; $i < count($matrix); $i++) {
-      for ($j = 0; $j < count($matrix[0]); $j++) {
+      for ($j = 0; $j < count($matrix[0]); $j++) {//统计每一列$matrix[0]
         if ($i == 0) {
           $heights[$j] = $matrix[$i][$j] == 0 ? 0 : 1;//不是0就是1,第一行也不进行累加
         } else {

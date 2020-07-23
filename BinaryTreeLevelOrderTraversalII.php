@@ -28,6 +28,7 @@ class Solution {
     [3],
   ]
    */
+  //也可以102题遍历完的结果,再做一次倒序
   function levelOrderBottom($root) {
     $res = [];
     if (!$root) return $res;
@@ -47,7 +48,7 @@ class Solution {
         }
         array_shift($queue);//减少队列长度,不然一直在while循环中
       }
-      //每froeach万一次,把结果放进res中
+      //每froeach完一次,把结果放进res中
       array_unshift($res, $list); //比如[9,20]进行头插
     }
     return $res;

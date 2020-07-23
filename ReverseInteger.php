@@ -15,7 +15,7 @@ class Solution {
   function reverse($x) {
     $res = 0;
     while ($x != 0) {
-      $res = floor($res * 10 + $x % 10);
+      $res = floor($res * 10 + $x % 10);//php对负数取模,res还是负数
       $x = intval($x / 10);
       // if ($x < 0) {
       //   $x = ceil($x / 10);
