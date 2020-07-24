@@ -31,7 +31,34 @@ class Solution {
 
    */
 
-//滑动窗口
+//可以考虑从一个空字符串每次增加一个字符直到s结束,
+// 当前字符为s[i],
+// left = max(left, last[s[i]]);获得的区间(left, i]是以s[i]结尾无重复字符的最长字串,
+// 因为s[left]与s[i]是同一个字符,
+// 减小left会有重复字符,
+// 从0遍历到s.size()就取到了每个字符结尾的最长无重复字符字串,
+// ans记录其中的最大值,
+      function lengthOfLongestSubstring2($s) {
+        $last = array();
+        $left = -1;
+        $ans = 0;
+        // for ($i = 0; $i < 128; $i++) {//初始化
+        //     $last[$i] = -1;
+        // }
+        $last = array_fill(0,128,-1); 
+        $len = strlen($s);
+        for ($i = 0; $i < $len; $i++) {
+            $asciiNumber = ord($s[$i]);//需要换为数字
+            $left = max($left, $last[$asciiNumber]);//left的值取最大值,也就是该字符最近一次被遍历到的最大下标,这样$i - $left得到的才是正确的
+            $last[$asciiNumber] = $i;//更新出现该字符的位置
+            $ans = max($ans, $i - $left);//更新最大值
+        }
+        // var_dump($last);
+        return $ans;
+    }
+
+
+//滑动窗口  不太好记
   function lengthOfLongestSubstring($s) {
     if (!$s || strlen($s) == 0) return 0;
 
@@ -50,8 +77,10 @@ class Solution {
     }
     return $ret;
   }
+
+
 }
 
 $solu = new Solution();
 $str = "tmmzuxt"; //注意这个测试用例的t在最开始出现
-var_dump( $solu->lengthOfLongestSubstring($str));
+var_dump( $solu->lengthOfLongestSubstring2($str));

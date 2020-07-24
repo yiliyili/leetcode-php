@@ -28,7 +28,7 @@ class Solution {
       array_push($this->res, $array);
       return;
     }
-    for ($i = $start; $i <= $n; $i++) {//注意加等于,包括n
+    for ($i = $start; $i <= $n; $i++) {//注意$i = $start 和加等于,包括n
       array_push($array, $i);
       $this->do($array, $n, $k - 1, $i + 1);//可以再选$k-1个
       array_pop($array);
