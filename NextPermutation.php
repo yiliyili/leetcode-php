@@ -26,7 +26,7 @@ class Solution {
   function nextPermutation(&$nums) {
     $n = count($nums);
     for ($i = $n - 2; $i >= 0; $i--) {//从倒数第二个开始
-      if ($nums[$i + 1] > $nums[$i]) {
+      if ($nums[$i + 1] > $nums[$i]) {//后边的数大于前边的数 $i首次逆序
         //右到左第一个比逆序的数字大的数字
         for ($j = $n - 1; $j >= 0; $j--) {
           if ($nums[$j] > $nums[$i]) {
@@ -36,10 +36,10 @@ class Solution {
         $temp = $nums[$i];
         $nums[$i] = $nums[$j];
         $nums[$j] = $temp;
-
+        // print_r($nums);
         $left = $i + 1;
         $right = $n - 1;
-        return $this->reverse($nums, $left, $right);
+        return $this->reverse($nums, $left, $right);//之间的序列要改为从小到大,比如[1,3,2]改为[2,1,3]
       }
     }
     //已经是最大值的情况下,变为最小值
@@ -56,3 +56,8 @@ class Solution {
     }
   }
 }
+
+$solu = new Solution();
+$arr = [1,3,2];
+print_r($solu->nextPermutation($arr));
+print_r($arr);

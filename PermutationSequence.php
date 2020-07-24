@@ -9,7 +9,7 @@ class Solution {
 
     n = 4 k = 14
 
-    [1,2,3,4] n! 4*3*2*1 = 24  
+    [1,2,3,4] n! 4*3*2*1 = 24
     1+(2,3,4) n-1! 6  1开头的有6种
     2+(1,3,4) n-1! 6
     3+(1,2,4) n-1! 6  ->   1+(2,4) 3-1! = 2
@@ -25,13 +25,17 @@ class Solution {
     for ($i = 0; $i < $n; $i++) {
       $nums[$i] = $i + 1;
       $fact *= $i + 1;//比如4的阶乘最终是24,还可以把所有阶乘算出来放进一个数组中
+      // 如 {0,1,2,6,24,120,720,5040,40320,362880,3628800};
     }
-    $k -= 1;
+    $k -= 1;//注意从0开始算的要-1
     $res = "";
     for ($i = 0; $i < $n; $i++) {
       $fact = floor($fact / ($n - $i));//新的阶乘
-      $index = floor($k / $fact);//找到数字对应的下标
-      $res .= (string)$nums[$index];
+      $index = floor($k / $fact);//找到数字对应的下标,会跳过几个索引 13/6
+            // var_dump($index);
+      $res .= (string)$nums[$index];//拼接结果,从高到低位 比如第一次找到3,3 1 2 4
+      // var_dump($k);
+      // var_dump($fact);
       $k %= $fact;
       unset($nums[$index]);
       $nums = array_values($nums);//调整索引下标
@@ -41,4 +45,4 @@ class Solution {
 }
 
 $solu = new Solution();
-print_r($solu->getPermutation(4, 12));
+print_r($solu->getPermutation(4, 14));
