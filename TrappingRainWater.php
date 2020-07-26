@@ -20,7 +20,7 @@ class Solution {
     $left_height = $height[0];
     $area = 0;
     //左边进行靠拢,只要下一个高度小于左边,就一定能接雨水
-    for ($i = 0; $i < $max_idx; $i++) {
+    for ($i = 1; $i < $max_idx; $i++) {//从第二根开始和第一根对比
       if ($left_height < $height[$i]) {//不能接雨水
         $left_height = $height[$i];//更新柱子高度
       } else {//可以接雨水
@@ -29,8 +29,8 @@ class Solution {
     }
     //右半部分
     $right_height = $height[count($height) - 1];
-    for ($i = count($height) - 1; $i > $max_idx; $i--) {
-      if ($right_height < $height[$i]) {
+    for ($i = count($height) - 2; $i > $max_idx; $i--) {
+      if ($right_height < $height[$i]) {//最开始右起第二和右起第一对比
         $right_height = $height[$i];
       } else {
         $area += $right_height - $height[$i];
@@ -61,3 +61,6 @@ class Solution {
   }
 
 }
+
+$solu = new Solution();
+var_dump($solu->trap([4,2,3]));

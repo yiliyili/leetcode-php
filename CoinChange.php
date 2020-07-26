@@ -40,11 +40,12 @@ class Solution {
         if ($amount == 0) return 0;
         // 初始化结果，最坏情况，都是 1
         $dp = array_fill(1, $amount, $amount+1);//这里的填充就是为了之后被更改
+        $dp[0] = 0;
         for ($i = 1; $i <= $amount; ++$i) {
             foreach ($coins as $coin) {
                 if ($coin > $i) continue;
                 // 状态转移方程
-                $dp[$i] = min($dp[$i], $dp[$i - $coin] + 1);
+                $dp[$i] = min($dp[$i], $dp[$i - $coin] + 1);//后者可能取到dp[0]
             }
         }
         //判断没有解法的时候就返回-1,因为即使全是1分钱凑成的也最多是$amount个硬币,不可能多出来
@@ -53,3 +54,6 @@ class Solution {
 
 
 }
+
+$solu = new Solution();
+var_dump($solu->coinChange2([1], 1));

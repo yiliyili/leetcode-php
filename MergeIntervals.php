@@ -29,14 +29,14 @@ class Solution {
       // 默认二维数组排序，是根据一维数组的第一个值进行排序的
       sort($intervals);
       $j = 0;
-      $ans[$j] = $intervals[0];
+      $ans[$j] = $intervals[0];//先存入第一个
       for($i=1;$i<count($intervals);$i++){
           $start = $intervals[$i][0];//2  8
           $end = $intervals[$i][1];//6    10
           if($start<=$ans[$j][1]){//说明可以合并
               $ans[$j] = [$ans[$j][0],max($ans[$j][1],$end)];
-          }else{
-              $j++;
+          }else{//不可以合并,预先存入第二个结果
+              $j++;//先累加再存
               $ans[$j] = $intervals[$i];
           }
       }
