@@ -35,7 +35,7 @@ class Solution {
     //进位处理
     for ($i = $m + $n - 1; $i >= 0; $i--) {//因为上边的ij是m和n-1得到的
       if ($array[$i] > 9) {
-        $array[$i - 1] += floor($array[$i] / 10);
+        $array[$i - 1] += floor($array[$i] / 10);//把进位加起来
         $array[$i] %= 10;
       }
       $res = (string)$array[$i] . $res;

@@ -1,11 +1,9 @@
 <?php
+// 14最长公共前缀
 class Solution {
-
   /**
    * @param String[] $strs
-   * @return 
-   14最长公共前缀
-
+   * @return
    输入: ["flower","flow","flight"]
    输出: "fl"
 

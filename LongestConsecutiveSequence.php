@@ -52,4 +52,46 @@ class Solution {
     }
     return $max;
   }
+
+     /**
+      * 时间复杂度O(n+2m)m为数组中不重复的value数量
+1.将整数数据作为内存地址指针(同hash表)
+2.遍历获取没有前驱的二维数组的长度
+3.获取最大长度
+     * @param Integer[] $nums
+     * @return Integer
+     */
+    //更容易理解
+    function longestConsecutive2($nums) {
+        if(!$nums)return 0;
+        $arr=[];
+        //value作为key,将数据作为内存地址指针
+        foreach($nums as $k=>$v){
+            $arr[$v]=true;
+        }
+        $j=0;
+        $dp=[];
+        foreach ( $arr as $k=>$v){
+            $i=0;
+            //不存在前驱则开始记录
+            $dp[$j]=0;
+            while(!isset($arr[$k-1])){//有前驱的就先跳过,因为肯定会遍历到那个前驱数,从这里开始肯定不是最长连续的
+                if(isset($arr[$k+1+$i])){
+                    $dp[$j]++;
+                }else{
+                    // if($dp[0]<$dp[$j]){
+                    //     $dp[0]=$dp[$j];
+                    // }
+                    $j++;
+                    break;
+                }
+                $i++;
+            }
+        }
+        return max($dp)+1;
+        // return $dp[0]+1;
+    }
+
+
+
 }

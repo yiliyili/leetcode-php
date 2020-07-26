@@ -19,6 +19,7 @@ class Solution {
     return $this->res;
   }
 
+  //回溯
   function restore($s, $k, $ip_string) {
     if ($k == 0 && strlen($s) == 0) {//4段找完,而且当前字符串也遍历完
       array_push($this->res, $ip_string);
@@ -28,7 +29,7 @@ class Solution {
       if (strlen($s) >= $i && $this->valid(substr($s, 0, $i))) {//比如256不满足就进不了if
         if ($k == 1) {//是要找的最后一段
           $this->restore(substr($s, $i), $k - 1, $ip_string . substr($s, 0, $i));//减去一段
-        } else {//不是的haul要处理点号
+        } else {//不是的还要处理点号
           $this->restore(substr($s, $i), $k - 1, $ip_string . substr($s, 0, $i) . ".");
         }
       }
