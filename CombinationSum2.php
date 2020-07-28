@@ -19,7 +19,7 @@ class Solution {
    */
   public $res = [];
   function combinationSum2($candidates, $target) {
-    sort($candidates);//排序
+    sort($candidates);//“解集不能包含重复的组合”，就提示我们得对数组先排个序（“升序”或者“降序”均可，下面示例中均使用“升序”）。
     $this->dfs([], $candidates, $target, 0);
     return $this->res;
   }

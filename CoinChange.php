@@ -10,7 +10,7 @@ class Solution {
 
    ［1,2,5]  11 
 
-
+得到最少的硬币数
 
 类似于跳台阶问题
       1  2  3  4  5  6  7  8  9  10  11
@@ -41,6 +41,7 @@ class Solution {
         // 初始化结果，最坏情况，都是 1
         $dp = array_fill(1, $amount, $amount+1);//这里的填充就是为了之后被更改
         $dp[0] = 0;
+        //这种情况内外层循环可以互相交换,因为都是比较,更改原来的值
         for ($i = 1; $i <= $amount; ++$i) {
             foreach ($coins as $coin) {
                 if ($coin > $i) continue;
