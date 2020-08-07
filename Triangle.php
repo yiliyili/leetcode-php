@@ -16,7 +16,7 @@ class Solution {
     自顶向下的最小路径和为 11（即，2 + 3 + 5 + 1 = 11）。
 
     dp[i][j] //i,j 
-状态定义：dp[i][j]表示包含第i行第j列元素的最小路径和
+定义 f(i, j) 为 (i, j)点到底边的最小路径和
     dp[i][j] = min(dp[i+1][j], dp[i+1][j+1]) + t[i][j]
 
 
@@ -35,6 +35,23 @@ class Solution {
     }
     return $dp[0][0];
   }
+
+    //填充
+    function minimumTotal3($triangle) {
+        // 三角形的层高/二维数组的行数
+        $n = count($triangle);
+        // 初始化二维数组
+        $dp = array_fill(0, $n+1, array_fill(0, $n+1, 0));//填充,多给一层0提供给三角形最后一层去加
+        //三角形
+        for ($i=$n - 1; $i >= 0; $i--) { 
+            for ($j=0; $j <= $i; $j++) {
+                // 当前坐标的最小路径和 = 下一层的同坐标和相邻坐标（较小值） + 当前坐标值
+                $dp[$i][$j] = min($dp[$i + 1][$j], $dp[$i + 1][$j + 1]) + $triangle[$i][$j];//dp下标为n的是0
+            }
+        }
+        return $dp[0][0];
+    }
+
 
   // 用一维dp处理
   function minimumTotal2($triangle) {
