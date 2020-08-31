@@ -16,7 +16,7 @@ class Solution {
    */
   function threeSum($nums) {
     if (!$nums) return [];
-    sort($nums);
+    sort($nums);//排序
     $ret = [];
     for ($i = 0; $i < count($nums) - 2; $i++) {//-2是因为左指针只需要指到倒数第二个数,给右指针留一个
       if ($i > 0 && $nums[$i] == $nums[$i - 1]) continue;//固定元素若有相同,去重

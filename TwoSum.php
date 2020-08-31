@@ -20,7 +20,7 @@ class Solution {
       if (isset($map[$diff])) {
         return [$map[$diff], $i];
       }
-      $map[$nums[$i]] = $i;
+      $map[$nums[$i]] = $i;//map[值] = 下标
     }
     return [0, 0];
   }

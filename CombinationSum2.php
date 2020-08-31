@@ -31,7 +31,7 @@ class Solution {
       return;
     }
     for ($i = $start; $i < count($candidates); $i++) {
-      if ($i != $start && $candidates[$i] == $candidates[$i - 1]) continue;
+      if ($i != $start && $candidates[$i] == $candidates[$i - 1]) continue;//加上$i != $start因为1,1,6是允许的,但是不能出现2个116
       array_push($array, $candidates[$i]);
       $this->dfs($array, $candidates, $target - $candidates[$i], $i + 1);//数字不能重复使用,需要+1
       array_pop($array);

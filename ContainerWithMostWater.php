@@ -1,11 +1,10 @@
 <?php
+// 11 盛水最多水的容器
 class Solution {
 
   /**
    * @param Integer[] $height
-   * @return Integer
-
-   盛水最多水的容器
+   * @return Integer   
 
    [1,8,6,2,5,4,8,3,7]
    */

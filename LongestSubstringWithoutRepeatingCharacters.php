@@ -50,7 +50,8 @@ class Solution {
         for ($i = 0; $i < $len; $i++) {
             $asciiNumber = ord($s[$i]);//需要换为数字
             $left = max($left, $last[$asciiNumber]);//left的值取最大值,也就是该字符最近一次被遍历到的最大下标,这样$i - $left得到的才是正确的
-            $last[$asciiNumber] = $i;//更新出现该字符的位置
+            // var_dump($left);
+            $last[$asciiNumber] = $i;//更新出现该字符的更大的位置
             $ans = max($ans, $i - $left);//更新最大值
         }
         // var_dump($last);

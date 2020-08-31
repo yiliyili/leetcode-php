@@ -28,11 +28,11 @@ class Solution {
     $dummyhead->next = $head;
     $q = $dummyhead;//当前节点
     while ($q->next && $q->next->next) {
-      //定3个节点,见上边注释三个节点是连续的
+      //定3个节点,见上边注释node1   node2  next三个节点是连续的
       $node1 = $q->next;
       $node2 = $node1->next;
       $next = $node2->next;
-      //建环
+      //交换
       $node2->next = $node1;
       $node1->next = $next;
       $q->next = $node2;

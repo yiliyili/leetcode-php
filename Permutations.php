@@ -28,7 +28,7 @@ class Solution {
       return;
     }
     for ($i = 0; $i < count($nums); $i++) {
-      if (in_array($nums[$i], $array)) continue;//去重复数字
+      if (in_array($nums[$i], $array)) continue;//去重复数字 如11
       array_push($array, $nums[$i]);
       $this->do($array, $nums);
       array_pop($array);

@@ -36,7 +36,7 @@ class Solution {
         $right = $mid - 1;
       }
     }
-    return substr($min_str, 0, min($left, $right));//截取不能超出两端
+    return substr($min_str, 0, min($left, $right));//截取不能超出两端 //跳出循环时left多加了1或者$right多减了1,因为left是1,最多min得到0,即不截取
   }
   //是不是其他单词的前缀
   private function _isPrefix($strs, $prefix) {
