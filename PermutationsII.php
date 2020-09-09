@@ -30,7 +30,7 @@ class Solution {
     }
     for ($i = 0; $i < count($nums); $i++) {//因为排列的第一个,第二个...元素不确定,所以下标从0开始,让每个元素都有机会选中
       if (isset($this->visited[$i]) && $this->visited[$i] == 1) continue;//这个数是否用过
-      if ($i > 0 && $nums[$i] == $nums[$i - 1] && $this->visited[$i - 1] == 0) continue;//题解中画递归树,模拟深度优先代码的执行过程,会发现选第二个1时,第一个1刚好被撤销,所以第一个1被选进来造成重复,需要进行剪枝
+      if ($i > 0 && $nums[$i] == $nums[$i - 1] && $this->visited[$i - 1] == 0) continue;//题解中画递归树,模拟深度优先代码的执行过程,会发现选第二个1时,第一个1刚好被撤销,所以第一个1被选进来造成重复的112,需要进行剪枝
       $this->visited[$i] = 1;
       array_push($array, $nums[$i]);
       $this->do($array, $nums);
@@ -39,3 +39,8 @@ class Solution {
     }
   }
 }
+
+echo '<pre>';
+$nums = [1,1,2];
+$solu = new Solution();
+print_r($solu->permuteUnique($nums));

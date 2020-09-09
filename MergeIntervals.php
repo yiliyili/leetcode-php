@@ -34,10 +34,11 @@ class Solution {
           $start = $intervals[$i][0];//2  8
           $end = $intervals[$i][1];//6    10
           if($start<=$ans[$j][1]){//说明可以合并
-              $ans[$j] = [$ans[$j][0],max($ans[$j][1],$end)];
+              $ans[$j] = [$ans[$j][0],max($ans[$j][1],$end)];//替换区间
           }else{//不可以合并,预先存入第二个结果
               $j++;//先累加再存
-              $ans[$j] = $intervals[$i];
+               // $ans[$j] = $intervals[$i];//追加区间
+               $ans[] = $intervals[$i];//也是追加
           }
       }
       return $ans;

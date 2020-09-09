@@ -5,7 +5,7 @@ class Solution {
   /**
    * @param Integer[] $nums
    * @return Integer[][]
-    输入: [1,2,3]
+    输入: [1,2,3]  无重复数字
     输出:
     [
       [1,2,3],
@@ -35,3 +35,8 @@ class Solution {
     }
   }
 }
+
+echo '<pre>';
+$nums = [1,2,3];
+$solu = new Solution();
+print_r($solu->permute($nums));

@@ -22,19 +22,6 @@ class Solution {
     dp[i] = min{i-1, i-2, i-5} + 1    
 
    */
-  function coinChange($coins, $amount) {
-    $dp = [];
-    $dp[0] = 0;//初始化
-    for ($i = 1; $i <= $amount; $i++) {
-      $dp[$i] = $amount + 1;
-      for ($j = 0; $j < count($coins); $j++) {//硬币种类数
-        if ($coins[$j] > $i) continue;
-        $dp[$i] = min($dp[$i - $coins[$j]] + 1, $dp[$i]);//与原来的最大值$dp[$i]作比较
-      }
-    }
-    return $dp[$amount] > $amount ? -1 : $dp[$amount];
-
-  }
   //更好的解法
   function coinChange2($coins, $amount) {
         if ($amount == 0) return 0;
@@ -52,6 +39,22 @@ class Solution {
         //判断没有解法的时候就返回-1,因为即使全是1分钱凑成的也最多是$amount个硬币,不可能多出来
         return $dp[$amount] > $amount ? -1 : $dp[$amount];
     }
+
+
+  function coinChange($coins, $amount) {
+    $dp = [];
+    $dp[0] = 0;//初始化
+    for ($i = 1; $i <= $amount; $i++) {
+      $dp[$i] = $amount + 1;
+      for ($j = 0; $j < count($coins); $j++) {//硬币种类数
+        if ($coins[$j] > $i) continue; //硬币面值比要凑的钱还大,凑不了
+        $dp[$i] = min($dp[$i - $coins[$j]] + 1, $dp[$i]);//与原来的最大值$dp[$i]作比较
+      }
+    }
+    return $dp[$amount] > $amount ? -1 : $dp[$amount];
+
+  }
+  
 
 
 }
