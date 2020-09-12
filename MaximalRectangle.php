@@ -61,7 +61,7 @@ class Solution {
   }
 }
 
-$martrix = [
+$matrix = [
     [1,0,1,0,1,1,1,1,1,1],
     [0,0,0,0,0,0,0,1,1,1],
     [1,0,1,0,1,1,0,1,1,1],
@@ -75,5 +75,5 @@ $martrix = [
 echo '<pre>';
 
 $solu = new Solution();
-// var_dump( $solu->maximalRectangle($martrix));
-var_dump( $solu->area([1,0,1,0,1,1,4,7,7,7 ]));
+var_dump( $solu->maximalRectangle($matrix));
+// var_dump( $solu->area([1,0,1,0,1,1,4,7,7,7 ]));
