@@ -39,7 +39,7 @@ class Solution {
   }
   //这是84题解题办法
   function area($heights) {
-    array_push($heights, 0);
+    array_push($heights, 0);//增加一个最小值,确保 $heights[$stack->top()] >= $heights[$i]时,所有元素都能弹出来,所有元素都是>=0的
     $stack = new SplStack;
     $max = 0;
     for ($i = 0; $i < count($heights); $i++) {
@@ -49,7 +49,10 @@ class Solution {
           $width = $i - $stack->top() - 1;
         } else { 
           $width = $i;
+          // var_dump($width );
         }
+        // echo '高度'.$heights[$last] ;
+        // var_dump($heights[$last] * $width);
         $max = max($max, $heights[$last] * $width);
       }
       $stack->push($i);
@@ -57,3 +60,20 @@ class Solution {
     return $max;
   }
 }
+
+$martrix = [
+    [1,0,1,0,1,1,1,1,1,1],
+    [0,0,0,0,0,0,0,1,1,1],
+    [1,0,1,0,1,1,0,1,1,1],
+    [0,0,0,0,1,1,1,1,1,1],
+    [1,0,1,0,1,1,1,1,1,1],
+    [0,0,0,0,0,0,1,1,1,1],
+    [1,0,1,0,1,1,1,1,1,1],
+    [0,0,0,0,1,1,0,0,0,1],
+];
+
+echo '<pre>';
+
+$solu = new Solution();
+// var_dump( $solu->maximalRectangle($martrix));
+var_dump( $solu->area([1,0,1,0,1,1,4,7,7,7 ]));
