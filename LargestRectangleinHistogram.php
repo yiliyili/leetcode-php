@@ -10,7 +10,7 @@ class Solution {
    */
   // 单调栈
   function largestRectangleArea($heights) {
-    array_push($heights, 0);//避免一直递增没法计算面积,
+    array_push($heights, 0);//避免一直递增没法计算面积, 增加一个最小值,确保 $heights[$stack->top()] >= $heights[$i]时,所有元素都能弹出来,所有元素都是>=0的
     $stack = new SplStack;
     $max = 0;
     for ($i = 0; $i < count($heights); $i++) {

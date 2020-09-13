@@ -1,5 +1,6 @@
 <?php
-//leetcode221 最大正方形
+//leetcode221 最大正方形 
+//两种方法
 class Solution {
 
     function maximalSquare($matrix){
@@ -19,8 +20,9 @@ class Solution {
         return $res;
     }
 
+    //单调栈
     function area($heights){
-        array_push($heights, 0);
+        array_push($heights, 0);//增加一个最小值,确保 $heights[$stack->top()] >= $heights[$i]时,所有元素都能弹出来,所有元素都是>=0的
         $stack = new SplStack;
         $max = 0;
         for ($i=0; $i < count($heights); $i++) { 
@@ -46,6 +48,27 @@ class Solution {
             $stack->push($i);
         }
         return $max;
+    }
+
+    //动态规划解法
+    // dp(i, j) 是以 matrix(i - 1, j - 1) 为 右下角 的正方形的最大边长,矩阵下标从0开始
+    function maximalSquare2($matrix) {
+        if (empty($matrix)) return 0;
+        $row = count($matrix);
+        $col = count($matrix[0]);
+        $dp = array_fill(0, $row, array_fill(0, $col, 0));
+        $max = 0;
+        for ($i = 1; $i <= $row; $i++) {
+            for ($j = 1; $j <= $col; $j++) {
+                if ($matrix[$i - 1][$j - 1] == '1') {
+                    //一开始dp最左边1列和最上边1行都是0,因为dp无论哪一维度是0,对应的矩阵i-1,j-1就是-1是不存在的,即此时dp对应点的值初始化为0
+                    $dp[$i][$j] = min($dp[$i - 1][$j], $dp[$i][$j - 1], $dp[$i - 1][$j - 1]) + 1;//边长
+                    $max = max($max, $dp[$i][$j]);//最大边长
+                }
+            }
+        }
+
+        return $max * $max;
     }
 }
 
