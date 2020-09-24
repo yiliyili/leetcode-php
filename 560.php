@@ -1,33 +1,27 @@
 <?php
 ini_set("display_errors", 1);
 error_reporting(E_ALL);
-class Solution
-{
+//前缀和,用map降低时间复杂度
+class Solution {
+    function subarraySum($nums, $k) {
+        $n = count($nums);
+        if ($n == 0) return 0;
+        $ans = 0;
+        $hash = [];
+        $hash[0] = 1;
+        $preSum = 0;
+        for ($i = 0; $i < $n; ++$i) {
+            $preSum += $nums[$i];
+            $diff = $preSum - $k;
+            if (isset($hash[$diff])) $ans+= $hash[$diff];
 
-    /**
-     * @param Integer[] $nums
-     * @param Integer $k
-     * @return Integer
-     */
-    public function subarraySum($nums, $k)
-    {
-        $map    = [];
-        $sum    = 0;
-        $result = 0;
-        $map[0] = 1;
-        foreach ($nums as $num) {
-            $sum += $num;
-            if (!isset($map[$sum])) {
-                $map[$sum] = 0;
+            if (isset($hash[$preSum])) {
+                $hash[$preSum]++;
+            } else {
+                $hash[$preSum] = 1;
             }
-            if (isset($map[$sum - $k])) {
-                $result += $map[$sum - $k];
-            }
-
-            $map[$sum]++;
         }
-        print_r($map);
-        return $result;
+        return $ans;
     }
 }
 $test = new Solution;
