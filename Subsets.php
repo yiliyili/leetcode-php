@@ -26,7 +26,7 @@ class Solution {
   }
   //回溯
   function do($array, $nums, $start) {
-    array_push($this->res, $array);
+    array_push($this->res, $array);//不返回,继续执行
     for ($i = $start; $i < count($nums); $i++) {//执行完毕的条件
       array_push($array, $nums[$i]);
       $this->do($array, $nums, $i + 1);
@@ -54,6 +54,7 @@ class Solution {
               $tmp[] = $num;
               $result[] = $tmp;
           }
+          // var_dump($result);
       }
 
       return $result;

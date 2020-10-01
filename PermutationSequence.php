@@ -25,19 +25,19 @@ class Solution {
     for ($i = 0; $i < $n; $i++) {
       $nums[$i] = $i + 1;
       $fact *= $i + 1;//比如4的阶乘最终是24,还可以把所有阶乘算出来放进一个数组中
-      // 如 {0,1,2,6,24,120,720,5040,40320,362880,3628800};
+      // 如 {1,2,6,24,120,720,5040,40320,362880,3628800};
     }
     $k -= 1;//注意从0开始算的要-1
     $res = "";
     for ($i = 0; $i < $n; $i++) {
-      $fact = floor($fact / ($n - $i));//新的阶乘
+      $fact = floor($fact / ($n - $i));//新的阶乘,先除以最后一个数,比如4!,就除以4
       $index = floor($k / $fact);//找到数字对应的下标,会跳过几个索引 13/6
-            // var_dump($index);
       $res .= (string)$nums[$index];//拼接结果,从高到低位 比如第一次找到3,3 1 2 4
+      // var_dump($index);
       // var_dump($k);
       // var_dump($fact);
       $k %= $fact;
-      unset($nums[$index]);
+      unset($nums[$index]);//用了的数字就丢掉,比如丢掉3
       $nums = array_values($nums);//调整索引下标
     }
     return $res;
