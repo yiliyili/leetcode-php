@@ -12,7 +12,8 @@ class Solution {
      * @return String
      */
     function convertToTitle($n) {
-        if($n<=0) return "";
+        //$n++ ;//加此行从0开始
+        if($n <= 0) return "";
         $s = "";
         while($n > 0){
             $n --;

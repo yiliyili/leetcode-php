@@ -17,7 +17,7 @@ class Solution {
         for($i=0;$i<$n;$i++){
             $ans += (ord($s[$i])-64)*pow(26,$n-$i-1);
         }
-        return $ans;
+        return $ans;//减1即为从0开始
     }
 }
 
